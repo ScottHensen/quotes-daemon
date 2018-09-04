@@ -35,7 +35,7 @@ public class RedisQuotesPublisher implements QuotesPublisher
 	@Override
 	public void publish(List<Quote> quotes) 
 	{
-		log.info(topic.getTopic() + quotes.toString());
+		log.debug(topic.getTopic() + quotes.toString());
 	
 		redisTemplate.convertAndSend(topic.getTopic(), quotes.toString());
 	}

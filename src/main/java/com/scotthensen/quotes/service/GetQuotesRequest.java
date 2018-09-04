@@ -1,4 +1,4 @@
-package com.scotthensen.quotes.svc;
+package com.scotthensen.quotes.service;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.scotthensen.quotes.svc.iex;
+package com.scotthensen.quotes.service.iex;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,18 +15,20 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.scotthensen.quotes.model.Quote;
-import com.scotthensen.quotes.svc.GetQuotes;
-import com.scotthensen.quotes.svc.GetQuotesRequest;
-import com.scotthensen.quotes.svc.GetQuotesResponse;
-import com.scotthensen.quotes.svc.iex.IexQuote;
+import com.scotthensen.quotes.service.GetQuotes;
+import com.scotthensen.quotes.service.GetQuotesRequest;
+import com.scotthensen.quotes.service.GetQuotesResponse;
+import com.scotthensen.quotes.service.iex.IexQuote;
 
 @Component
-class IexQuoteSvc implements GetQuotes {
-	@Value("${iex.url.base}")
+class IexQuoteSvc implements GetQuotes 
+{
+	@Value("${getquotes.iex.url.base}")
 	private String IEX_BASE_URL;
-//	private static final String IEX_BASE_URL      = "https://api.iextrading.com/1.0/stock/market/batch?symbols=";
-	private static final String IEX_REQUEST_TYPES = "&types=quote";
-
+	
+	@Value("${getquotes.iex.url.request.types}")
+	private String IEX_REQUEST_TYPES;
+	
 	public GetQuotesResponse getQuotes(GetQuotesRequest request) 
 	{
 		RestTemplate             restTemplate = new RestTemplate();
@@ -67,8 +69,7 @@ class IexQuoteSvc implements GetQuotes {
 						iexResponse.getBody().entrySet()
 							.stream()
 							.sorted(Map.Entry.<String, IexQuote>comparingByKey())
-							.map(q -> new Quote(//null, 
-											    q.getValue().getQuote().getSymbol(), 
+							.map(q -> new Quote(q.getValue().getQuote().getSymbol(), 
 											    q.getValue().getQuote().getIexBidPrice(), 
 											    q.getValue().getQuote().getIexAskPrice()  )	)
 							.collect(Collectors.toList());

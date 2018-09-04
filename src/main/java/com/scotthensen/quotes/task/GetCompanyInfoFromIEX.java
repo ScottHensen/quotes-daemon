@@ -7,7 +7,7 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.scotthensen.quotes.svc.iex.IexCompanyInfo;
+import com.scotthensen.quotes.service.iex.IexCompanyInfo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class GetCompanyInfoFromIEX 
 {
+	//TODO:  this is just a cut-paste from a previous exercise.  need to actually clean it up and make it 
+	//       persist to enterprise each morning.
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss:SSS Z");
 	private static final String IEX_URL        = "https://api.iextrading.com/1.0";
 	private static final String TESLA_COMPANY  = "/stock/sam/company";

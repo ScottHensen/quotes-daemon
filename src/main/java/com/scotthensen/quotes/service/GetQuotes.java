@@ -1,4 +1,4 @@
-package com.scotthensen.quotes.svc;
+package com.scotthensen.quotes.service;
 
 import org.springframework.stereotype.Service;
 

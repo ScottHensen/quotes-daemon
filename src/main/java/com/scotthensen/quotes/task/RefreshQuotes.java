@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.scotthensen.quotes.model.Quote;
-import com.scotthensen.quotes.persistence.enterprise.SecurityEntity;
-import com.scotthensen.quotes.persistence.enterprise.SecurityRepository;
+import com.scotthensen.quotes.persistence.SecurityEntity;
+import com.scotthensen.quotes.persistence.SecurityRepository;
 import com.scotthensen.quotes.pubsub.QuotesPublisher;
 import com.scotthensen.quotes.repository.QuoteRepository;
-import com.scotthensen.quotes.svc.GetQuotes;
-import com.scotthensen.quotes.svc.GetQuotesRequest;
-import com.scotthensen.quotes.svc.GetQuotesResponse;
+import com.scotthensen.quotes.service.GetQuotes;
+import com.scotthensen.quotes.service.GetQuotesRequest;
+import com.scotthensen.quotes.service.GetQuotesResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,11 +39,12 @@ public class RefreshQuotes
 	@Autowired
 	private QuotesPublisher quotesPublisher;
 	
-	@Scheduled(cron = "${task.refreshquotes.cron.test}")
+	@Scheduled(cron = "${task.refreshquotes.cron.test}" )
 	@Scheduled(cron = "${task.refreshquotes.cron.start}")
-	@Scheduled(cron = "${task.refreshquotes.cron.mid}")
-	@Scheduled(cron = "${task.refreshquotes.cron.stop}")
-	public void refreshStockQuotes() throws JsonProcessingException {
+	@Scheduled(cron = "${task.refreshquotes.cron.mid}"  )
+	@Scheduled(cron = "${task.refreshquotes.cron.stop}" )
+	public void refreshStockQuotes() throws JsonProcessingException 
+	{
 		log.debug("The time is now {}", dateFormat.format(new Date()), " ... start refreshStockQuotes");
 
 		List<SecurityEntity> securities = securityRepository.findAll();

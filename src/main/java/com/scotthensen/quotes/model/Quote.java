@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
-import com.scotthensen.quotes.svc.iex.IexStockQuote;
+import com.scotthensen.quotes.service.iex.IexStockQuote;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

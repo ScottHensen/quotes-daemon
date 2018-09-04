@@ -1,4 +1,4 @@
-package com.scotthensen.quotes.persistence.enterprise;
+package com.scotthensen.quotes.persistence;
 
 import java.sql.Date;
 

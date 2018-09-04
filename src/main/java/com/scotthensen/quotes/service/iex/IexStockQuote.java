@@ -1,4 +1,4 @@
-package com.scotthensen.quotes.svc.iex;
+package com.scotthensen.quotes.service.iex;
 
 import java.math.BigDecimal;
 
